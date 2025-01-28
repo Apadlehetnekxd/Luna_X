@@ -83,8 +83,7 @@ Luna X is an advanced tool designed to simplify various network-related tasks an
 | 2.0     | :x:                |
 | 1.0     | :x:                |
 
-### Reporting a Vulnerability  
-If you discover a vulnerability, please report it by contacting the development team at [magyaradam412@gmail.com]. Provide a detailed description, reproduction steps, and any relevant information. Expect an acknowledgment within 48 hours and updates on the resolution process.
+
 
 ---
 
