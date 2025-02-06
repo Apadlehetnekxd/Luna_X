@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luna X</title>
-    <link rel="icon" href="static/images/tab_icon.png" sizes="512x512" type="image/png">
+
+    <link rel="icon" type="image/x-icon" href="favico.ico">
     <link rel="stylesheet" href="static/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.22/dist/full.min.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/x-icon" href="LunaX.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style type="text/css">
+         body {
+            background-color: black;
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: black;
+            }
+        }
         @font-face {
             font-family: Poppins;
             font-style: normal;
@@ -142,7 +151,7 @@
             </div>
         </main>
         <footer class="text-center" style="bottom:0;position: sticky;">
-            <!-- Footer content can be added here -->
+           
         </footer>
     </div>
     <canvas id="starsCanvas" style="position: fixed; top: 0; z-index: 0;" width="1900" height="900"></canvas>
@@ -155,18 +164,18 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Cache canvas dimensions
+        
         let canvasWidth = canvas.width;
         let canvasHeight = canvas.height;
 
-        // Star animation configuration
+     
         const stars = [];
         const numStars = 200;
         const mouseRepulsionRadius = 100;
         let mouseX = null;
         let mouseY = null;
 
-        // Initialize stars with random positions and velocities
+       
         for (let i = 0; i < numStars; i++) {
             stars.push({
                 x: Math.random() * canvasWidth,
@@ -177,24 +186,23 @@
             });
         }
 
-        // Mouse movement tracking
+        
         window.addEventListener("mousemove", (event) => {
             mouseX = event.clientX;
             mouseY = event.clientY;
         });
 
-        // Reset mouse position when cursor leaves window
         window.addEventListener("mouseleave", () => {
             mouseX = null;
             mouseY = null;
         });
 
-        // Disable right-click context menu on the entire document
+      
         document.addEventListener('contextmenu', function(event) {
             event.preventDefault();
         });
 
-        // Update canvas size and reposition stars on window resize
+    
         window.addEventListener('resize', () => {
             canvasWidth = window.innerWidth;
             canvasHeight = window.innerHeight;
@@ -211,17 +219,17 @@
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
             stars.forEach((star) => {
-                // Update star positions
+             
                 star.x += star.velocityX;
                 star.y += star.velocityY;
 
-                // Wrap stars around screen edges
+            
                 if (star.x < 0) star.x = canvasWidth;
                 if (star.x > canvasWidth) star.x = 0;
                 if (star.y < 0) star.y = canvasHeight;
                 if (star.y > canvasHeight) star.y = 0;
 
-                // Mouse repulsion effect
+       
                 if (mouseX !== null && mouseY !== null) {
                     const dx = star.x - mouseX;
                     const dy = star.y - mouseY;
@@ -235,7 +243,7 @@
                     }
                 }
 
-                // Draw star
+                
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
                 ctx.fillStyle = "white";
@@ -245,7 +253,7 @@
             requestAnimationFrame(animate);
         }
 
-        // Start animation
+     
         animate();
     </script>
 </body>
