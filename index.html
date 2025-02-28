@@ -3,85 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="LunaX.ico">
-    <title>Coming Soon</title>
+    <title>Luna X</title>
+    <link rel="icon" type="image/x-icon" href="favico.ico">
     <style>
+        /* Alapstílusok */
         body {
+            font-family: Inter, sans-serif;
+            color: rgba(255, 255, 255, 0.95);
+            background-color: #000000;
             margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #000;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        .container {
-            text-align: center;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        h1 {
-            font-size: 4rem;
-            margin: 0;
-            animation: slideIn 1.5s ease-out;
+        a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
         }
 
         p {
-            font-size: 1.5rem;
-            margin: 20px 0;
-            animation: slideIn 2s ease-out;
+            color: #dde4fd80;
+            line-height: 1.5;
         }
 
-        .social-links {
-            margin-top: 40px;
-            animation: fadeIn 4s ease-in-out;
+        h1 {
+            font-family: Epilogue, sans-serif;
+            font-size: 4em;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 0;
         }
 
-        .social-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
+        .backdrop {
+            background-image: url("../images/backdrop.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            width: 100%;
+            height: 70em;
+            position: absolute;
+            z-index: -1;
+            animation: fadeIn 2s ease-out;
         }
 
-        .social-links a:hover {
-            color: #ccc;
+        .blur {
+            -webkit-backdrop-filter: blur(1em);
+            backdrop-filter: blur(1em);
         }
 
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 0.5em;
+            padding: 0 0.75em;
+            width: fit-content;
+            height: 2.75em;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            background-color: rgb(0, 0, 0);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .button-secondary {
+            color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            box-sizing: border-box;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .button-secondary:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .button-secondary:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 30em) {
+            .download-button p {
+                display: none;
+            }
+            .download-button::after {
+                content: "Download";
+            }
+
+            .invite-button p {
+                display: none;
+            }
+            .invite-button::after {
+                content: "Discord";
+            }
+        }
+
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 4em);
+            max-width: 33em;
+            padding-top: 12em;
+            margin: 0 auto;
+            text-align: center;
+            gap: 2em;
+            animation: fadeIn 1.5s ease-out; 
+        }
+
+        .hero > p {
+            max-width: 31rem;
+            font-size: 1.25em;
+            margin: 0 auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1em;
+            z-index: 1;
+        }
+
+        .preview-container {
+            width: 100%;
+            margin-top: -9em;
+            padding-top: 9em;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 95%);
+            animation: fadeIn 2s ease-out; 
+        }
+
+        .preview {
+            display: block;
+            width: 75em;
+            max-width: calc(100% - 2em);
+            margin: 3em auto;
+            filter: drop-shadow(0 -1.5em 3em #ae51ff59);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            animation: scaleIn 1.5s ease-out; 
+        }
+
+        .preview:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 -1.5em 4em #ae51ff99);
+        }
+
+        @media (max-width: 48em) {
+            h1 {
+                font-size: 3em;
+            }
+
+            .hero > p {
+                font-size: 1em;
+            }
+        }
+
+        
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @keyframes slideIn {
+        @keyframes scaleIn {
             from {
-                transform: translateY(-50px);
                 opacity: 0;
+                transform: scale(0.9);
             }
             to {
-                transform: translateY(0);
                 opacity: 1;
+                transform: scale(1);
             }
         }
+
+        
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none; 
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
     </style>
+    <script type="module">
+       
+        document.addEventListener("DOMContentLoaded", () => {
+            const loader = document.createElement("div");
+            loader.className = "loader";
+            document.body.appendChild(loader);
+            loader.style.display = "block";
+
+            window.addEventListener("load", () => {
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    loader.remove();
+                }, 500); 
+            });
+        });
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Coming Soon!</h1>
-        <p>We're working on something awesome. Stay tuned!</p>
-        <div class="social-links">
-            <a href="https://discord.gg/B348Cp8mhy" target="_blank">Discord</a>
-            <a href="https://github.com/Apadlehetnekxd/Luna_X" target="_blank">GitHub</a>
+    <nav></nav>
+
+    <div class="backdrop"></div>
+
+    <main>
+        <div class="hero">
+            <h1>Luna X back, better than ever</h1>
+            <p>
+                A powerful c# hacking app, complete
+                with a text editor and built-in hacking tools.
+            </p>
+            <div class="hero-buttons">
+                <a class="button download-button" href="https://github.com/Apadlehetnekxd/Luna_X/releases/download/LUNA/Luna-X.zip">
+                    <img src="images/windows.svg" alt="Android Logo">
+                    <p>Download for Windows</p>
+                </a>
+                <a class="button button-secondary invite-button" href="https://discord.gg/B348Cp8mhy" target="_blank" rel="noopener noreferrer">
+                    <img src="images/discord.svg" alt="Discord Logo">
+                    <p>Join Discord</p>
+                </a>
+            </div>
         </div>
-    </div>
+
+        <div class="preview-container">
+            <img class="preview" src="images/preview.png" alt="Krnl Preview" draggable="false">
+        </div>
+    </main>
+
+    <footer></footer>
 </body>
 </html>
