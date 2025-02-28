@@ -6,7 +6,25 @@
     <title>Luna X</title>
     <link rel="icon" type="image/x-icon" href="favico.ico">
     <style>
-        /* Alapstílusok */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
         body {
             font-family: Inter, sans-serif;
             color: rgba(255, 255, 255, 0.95);
@@ -90,22 +108,17 @@
         }
 
         @media (max-width: 30em) {
-            .download-button p {
+            .download-button p, .invite-button p {
                 display: none;
             }
             .download-button::after {
                 content: "Download";
-            }
-
-            .invite-button p {
-                display: none;
             }
             .invite-button::after {
                 content: "Discord";
             }
         }
 
-        
         .hero {
             display: flex;
             flex-direction: column;
@@ -115,7 +128,7 @@
             margin: 0 auto;
             text-align: center;
             gap: 2em;
-            animation: fadeIn 1.5s ease-out; 
+            animation: fadeIn 1.5s ease-out;
         }
 
         .hero > p {
@@ -137,7 +150,7 @@
             margin-top: -9em;
             padding-top: 9em;
             mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 95%);
-            animation: fadeIn 2s ease-out; 
+            animation: fadeIn 2s ease-out;
         }
 
         .preview {
@@ -147,7 +160,7 @@
             margin: 3em auto;
             filter: drop-shadow(0 -1.5em 3em #ae51ff59);
             transition: transform 0.3s ease, filter 0.3s ease;
-            animation: scaleIn 1.5s ease-out; 
+            animation: scaleIn 1.5s ease-out;
         }
 
         .preview:hover {
@@ -159,13 +172,11 @@
             h1 {
                 font-size: 3em;
             }
-
             .hero > p {
                 font-size: 1em;
             }
         }
 
-        
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -188,7 +199,6 @@
             }
         }
 
-        
         .loader {
             border: 8px solid #f3f3f3;
             border-top: 8px solid #3498db;
@@ -201,16 +211,72 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1000;
-            display: none; 
+            display: none;
         }
 
         @keyframes spin {
             0% { transform: translate(-50%, -50%) rotate(0deg); }
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 1em;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2em;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav a {
+            margin: 0 1em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 1.5em;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        nav a img {
+            width: 20px;
+            height: 20px;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 2em;
+            text-align: center;
+            margin-top: 2em;
+        }
+
+        footer p {
+            margin: 0.5em 0;
+        }
+
+        footer a {
+            color: #ae51ff;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
     <script type="module">
-       
         document.addEventListener("DOMContentLoaded", () => {
             const loader = document.createElement("div");
             loader.className = "loader";
@@ -221,26 +287,23 @@
                 loader.style.opacity = "0";
                 setTimeout(() => {
                     loader.remove();
-                }, 500); 
+                }, 500);
             });
         });
     </script>
 </head>
 <body>
-    <nav></nav>
-
     <div class="backdrop"></div>
-
     <main>
         <div class="hero">
             <h1>Luna X back, better than ever</h1>
             <p>
-                A powerful C# hacking app, complete
+                A powerful c# hacking app, complete
                 with a text editor and built-in hacking tools.
             </p>
             <div class="hero-buttons">
                 <a class="button download-button" href="https://github.com/Apadlehetnekxd/Luna_X/releases/download/LUNA/Luna-X.zip">
-                    <img src="images/windows.svg" alt="Android Logo">
+                    <img src="images/windows.svg" alt="Windows Logo">
                     <p>Download for Windows</p>
                 </a>
                 <a class="button button-secondary invite-button" href="https://discord.gg/B348Cp8mhy" target="_blank" rel="noopener noreferrer">
@@ -249,12 +312,9 @@
                 </a>
             </div>
         </div>
-
         <div class="preview-container">
-            <img class="preview" src="images/preview.png" alt="Krnl Preview" draggable="false">
+            <img class="preview" src="images/preview.png" alt="Luna X Preview" draggable="false">
         </div>
     </main>
-
-    <footer></footer>
 </body>
 </html>
