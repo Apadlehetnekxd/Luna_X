@@ -31,7 +31,6 @@
             background-color: #000000;
             margin: 0;
             overflow-x: hidden;
-            cursor: none; /* Alapértelmezett kurzor elrejtése */
         }
 
         a {
@@ -108,18 +107,6 @@
             transform: scale(0.95);
         }
 
-        @media (max-width: 30em) {
-            .download-button p, .invite-button p {
-                display: none;
-            }
-            .download-button::after {
-                content: "Download";
-            }
-            .invite-button::after {
-                content: "Discord";
-            }
-        }
-
         .hero {
             display: flex;
             flex-direction: column;
@@ -140,7 +127,7 @@
 
         .hero-buttons {
             display: flex;
-            flex-direction: row;
+            flex-direction: row; /* Vízszintes elrendezés asztali nézetben */
             justify-content: center;
             gap: 1em;
             z-index: 1;
@@ -156,7 +143,7 @@
 
         .preview {
             display: block;
-            width: 75em;
+            width: 75em; /* Maximális szélesség asztali nézetben */
             max-width: calc(100% - 2em);
             margin: 3em auto;
             filter: drop-shadow(0 -1.5em 3em #ae51ff59);
@@ -169,12 +156,20 @@
             filter: drop-shadow(0 -1.5em 4em #ae51ff99);
         }
 
-        @media (max-width: 48em) {
+        @media (max-width: 768px) { /* Mobil nézet */
             h1 {
-                font-size: 3em;
+                font-size: 2.5em; /* Kisebb betűméret mobilon */
             }
             .hero > p {
-                font-size: 1em;
+                font-size: 1em; /* Kisebb szöveg mobilon */
+            }
+            .hero-buttons {
+                flex-direction: column; /* Oszlopos elrendezés mobilon */
+                align-items: center; /* Középre igazítás */
+            }
+            .preview {
+                width: 100%; /* 100% szélesség a mobil nézethez */
+                max-width: none; /* Nincs maximális szélesség mobilon */
             }
         }
 
@@ -200,32 +195,83 @@
             }
         }
 
-        
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .footer-content p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #0073e6;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            font-size: 0.8em;
+        }
     </style>
     <script type="module">
         document.addEventListener("DOMContentLoaded", () => {
-            // Kurzor elem létrehozása
-            const cursor = document.createElement("div");
-            cursor.className = "custom-cursor";
-            document.body.appendChild(cursor);
+            const loader = document.createElement("div");
+            loader.className = "loader";
+            document.body.appendChild(loader);
+            loader.style.display = "block";
 
-            // Kurzor mozgatása
-            document.addEventListener("mousemove", (e) => {
-                cursor.style.left = ${e.clientX}px;
-                cursor.style.top = ${e.clientY}px;
-            });
-
-            // Kurzor stílusának változtatása kattintható elemek felett
-            document.addEventListener("mouseover", (e) => {
-                if (e.target.tagName === "A" || e.target.tagName === "BUTTON") {
-                    cursor.style.transform = "scale(1.5)";
-                }
-            });
-
-            document.addEventListener("mouseout", (e) => {
-                if (e.target.tagName === "A" || e.target.tagName === "BUTTON") {
-                    cursor.style.transform = "scale(1)";
-                }
+            window.addEventListener("load", () => {
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    loader.remove();
+                }, 500);
             });
         });
     </script>
@@ -234,9 +280,9 @@
     <div class="backdrop"></div>
     <main>
         <div class="hero">
-            <h1>Luna X back, better than ever</h1>
+            <h1>Luna X is back, better Than ever</h1>
             <p>
-                A powerful c# hacking app, complete
+                A powerful C# hacking app, complete
                 with a text editor and built-in hacking tools.
             </p>
             <div class="hero-buttons">
@@ -254,5 +300,6 @@
             <img class="preview" src="images/preview.png" alt="Luna X Preview" draggable="false">
         </div>
     </main>
+    
 </body>
 </html>
