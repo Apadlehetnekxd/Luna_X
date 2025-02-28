@@ -127,7 +127,7 @@
 
         .hero-buttons {
             display: flex;
-            flex-direction: row; /* Vízszintes elrendezés asztali nézetben */
+            flex-direction: row; 
             justify-content: center;
             gap: 1em;
             z-index: 1;
@@ -143,7 +143,7 @@
 
         .preview {
             display: block;
-            width: 75em; /* Maximális szélesség asztali nézetben */
+            width: 65em; 
             max-width: calc(100% - 2em);
             margin: 3em auto;
             filter: drop-shadow(0 -1.5em 3em #ae51ff59);
@@ -156,20 +156,20 @@
             filter: drop-shadow(0 -1.5em 4em #ae51ff99);
         }
 
-        @media (max-width: 768px) { /* Mobil nézet */
+        @media (max-width: 768px) { 
             h1 {
-                font-size: 2.5em; /* Kisebb betűméret mobilon */
+                font-size: 2.5em; 
             }
             .hero > p {
-                font-size: 1em; /* Kisebb szöveg mobilon */
+                font-size: 1em; 
             }
             .hero-buttons {
-                flex-direction: column; /* Oszlopos elrendezés mobilon */
-                align-items: center; /* Középre igazítás */
+                flex-direction: column; 
+                align-items: center;
             }
             .preview {
-                width: 100%; /* 100% szélesség a mobil nézethez */
-                max-width: none; /* Nincs maximális szélesség mobilon */
+                 width: 100%;
+                max-width: none; 
             }
         }
 
