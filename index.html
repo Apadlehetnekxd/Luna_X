@@ -51,7 +51,17 @@
             margin: 0;
         }
 
-       
+       .backdrop {
+            background-image: url("../images/backdrop.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            width: 100%;
+            height: 70em;
+            position: absolute;
+            z-index: -1;
+            animation: fadeIn 2s ease-out;
+        }
 
         .blur {
             -webkit-backdrop-filter: blur(1em);
