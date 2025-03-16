@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luna X</title>
     <link rel="icon" type="image/x-icon" href="favico.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         ::-webkit-scrollbar {
             width: 12px;
@@ -24,19 +26,20 @@
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.5);
         }
-
         body {
-            font-family: Inter, sans-serif;
-            color: rgba(255, 255, 255, 0.95);
-            background-color: #000000;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            background-color: #000;
             margin: 0;
             overflow-x: hidden;
         }
 
         a {
-            color: rgba(255, 255, 255, 0.95);
+            color: #fff;
             text-decoration: none;
         }
+
+      
 
         p {
             color: #dde4fd80;
@@ -51,7 +54,7 @@
             margin: 0;
         }
 
-       .backdrop {
+        .backdrop {
             background-image: url("../images/backdrop.jpg");
             background-size: cover;
             background-repeat: no-repeat;
@@ -63,11 +66,43 @@
             animation: fadeIn 2s ease-out;
         }
 
-        .blur {
-            -webkit-backdrop-filter: blur(1em);
-            backdrop-filter: blur(1em);
+        .hero {
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 4em);
+            max-width: 33em;
+            padding-top: 12em;
+            margin: 0 auto;
+            text-align: center;
+            gap: 2em;
+            animation: fadeIn 1.5s ease-out;
         }
 
+        .hero > p {
+            max-width: 31rem;
+            font-size: 1.25em;
+            margin: 0 auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            z-index: 1;
+        }
+        .hero2 {
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 4em);
+            max-width: 33em;
+            padding-top: 2em;
+            margin: 0 auto;
+            text-align: center;
+            gap: 2em;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        
         .button {
             display: flex;
             align-items: center;
@@ -107,32 +142,6 @@
             transform: scale(0.95);
         }
 
-        .hero {
-            display: flex;
-            flex-direction: column;
-            width: calc(100% - 4em);
-            max-width: 33em;
-            padding-top: 12em;
-            margin: 0 auto;
-            text-align: center;
-            gap: 2em;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        .hero > p {
-            max-width: 31rem;
-            font-size: 1.25em;
-            margin: 0 auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-direction: row; 
-            justify-content: center;
-            gap: 1em;
-            z-index: 1;
-        }
-
         .preview-container {
             width: 100%;
             margin-top: -9em;
@@ -143,36 +152,148 @@
 
         .preview {
             display: block;
-            width: 65em; 
+            width: 65em;
             max-width: calc(100% - 2em);
             margin: 3em auto;
-            filter: drop-shadow(0 -1.5em 3em #ae51ff59);
+            filter: drop-shadow(0 -1.5em 3em rgba(174, 81, 255, 0.3));
             transition: transform 0.3s ease, filter 0.3s ease;
             animation: scaleIn 1.5s ease-out;
         }
 
         .preview:hover {
             transform: scale(1.02);
-            filter: drop-shadow(0 -1.5em 4em #ae51ff99);
+            filter: drop-shadow(0 -1.5em 4em rgba(174, 81, 255, 0.5));
         }
 
-        @media (max-width: 768px) { 
-            h1 {
-                font-size: 2.5em; 
-            }
-            .hero > p {
-                font-size: 1em; 
-            }
-            .hero-buttons {
-                flex-direction: column; 
-                align-items: center;
-            }
-            .preview {
-                 width: 100%;
-                max-width: none; 
-            }
+       
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2em;
+            padding: 4em 2em;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.9);
         }
 
+        .feature-block {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2em;
+            text-align: left;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .feature-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-block.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .feature-block h3 {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        .feature-block h3 i {
+            font-size: 1.5em; 
+            color: #ae51ff; 
+        }
+
+        .feature-block ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-block ul li {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            margin-bottom: 0.75em;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .feature-block ul li::before {
+            content: "✔️";
+            font-size: 1em;
+            color: #ae51ff;
+        }
+
+        footer {
+            background-color: #000000;
+            padding: 4em 2em;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2em;
+        }
+
+        .footer-section {
+            margin-bottom: 2em;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+            color: #fff;
+        }
+
+        .footer-section p {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0.5em 0;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ae51ff;
+        }
+
+        .footer-section .social-icons {
+            display: flex;
+            gap: 1em;
+        }
+
+        .footer-section .social-icons a {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .footer-section .social-icons a:hover {
+            color: #ae51ff;
+        }
+
+        .footer-bottom {
+            margin-top: 2em;
+            padding-top: 2em;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+       
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -195,83 +316,106 @@
             }
         }
 
-        .loader {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #3498db;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            display: none;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .hero > p {
+                font-size: 1em;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .preview {
+                width: 100%;
+                max-width: none;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 2em 1em;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        #community {
+            padding: 8rem 0;
+            margin: 0;
+            position: relative;
         }
 
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        footer {
-            background-color: #000;
-            color: #fff;
-            padding: 20px 0;
+        .cta-sec {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 4rem;
             text-align: center;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+            will-change: transform, opacity;
         }
 
-        .footer-content {
-            max-width: 1200px;
+      
+
+        .cta-cont {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        .footer-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.5em;
+        .cta-sec h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .footer-content p {
-            margin: 5px 0;
-            font-size: 0.9em;
+        .cta-sec p {
+            color: var(--text-sec);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
 
-        .social-icons {
-            margin-top: 15px;
-        }
-
-        .social-icons a {
-            color: #fff;
-            margin: 0 10px;
-            font-size: 1.5em;
-            transition: color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: #0073e6;
-        }
-
-        .footer-bottom {
-            margin-top: 20px;
-            border-top: 1px solid #444;
-            padding-top: 10px;
-            font-size: 0.8em;
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
     </style>
-    <script type="module">
+    <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const loader = document.createElement("div");
-            loader.className = "loader";
-            document.body.appendChild(loader);
-            loader.style.display = "block";
+            const featureBlocks = document.querySelectorAll(".feature-block");
 
-            window.addEventListener("load", () => {
-                loader.style.opacity = "0";
-                setTimeout(() => {
-                    loader.remove();
-                }, 500);
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            entry.target.classList.remove("hidden");
+                        } else {
+                            entry.target.classList.add("hidden");
+                            entry.target.classList.remove("visible");
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                }
+            );
+
+            featureBlocks.forEach((block) => {
+                observer.observe(block);
             });
         });
     </script>
@@ -280,17 +424,17 @@
     <div class="backdrop"></div>
     <main>
         <div class="hero">
-            <h1>Luna X is back, better Than ever</h1>
+            <h1>Luna X is back, better than ever</h1>
             <p>
                 A powerful C# application with a text editor
                 and built-in monitoring tools.
             </p>
             <div class="hero-buttons">
-                <a class="button download-button" href="https://github.com/Apadlehetnekxd/Luna_X/releases/download/LUNA/Luna-X.zip">
+                <a class="button" href="https://github.com/Apadlehetnekxd/Luna_X/releases/download/LUNA/Luna-X.zip">
                     <img src="images/windows.svg" alt="Windows Logo">
                     <p>Download for Windows</p>
                 </a>
-                <a class="button button-secondary invite-button" href="https://discord.gg/B348Cp8mhy" target="_blank" rel="noopener noreferrer">
+                <a class="button button-secondary" href="https://discord.gg/B348Cp8mhy" target="_blank" rel="noopener noreferrer">
                     <img src="images/discord.svg" alt="Discord Logo">
                     <p>Join Discord</p>
                 </a>
@@ -299,7 +443,102 @@
         <div class="preview-container">
             <img class="preview" src="images/preview.png" alt="Luna X Preview" draggable="false">
         </div>
+        <div class="hero2">
+            <h2 class="sec-ttl">Unique and User-Friendly Features</h2>
+            
+        </div>
+         <div class="features">
+            <div class="feature-block">
+                <h3>
+                    
+                    <i class="fas fa-wifi" style="font-size: 1em; margin-left: 0.2em;"></i> 
+                    Monitoring Tools
+                </h3>
+                <ul>
+                    <li>Real-time system stats</li>
+                    <li>CPU and RAM usage</li>
+                    <li>Network activity</li>
+                    <li>Custom alerts</li>
+                </ul>
+            </div>
+
+            <div class="feature-block">
+                <h3><i class="fas fa-cog"></i>Customizable</h3>
+                <ul>
+                    <li>Fully modular interface</li>
+                    <li>Custom plugins</li>
+                    <li>Hotkey support</li>
+                    <li>User profiles</li>
+                </ul>
+            </div>
+
+            <div class="feature-block">
+                <h3><i class="fas fa-shield-alt"></i> Open-Source Security</h3>
+                <ul>
+                    <li>Transparent codebase</li>
+                    <li>Community-reviewed security</li>
+                    <li>Fast vulnerability fixes</li>
+                    <li>No hidden data collection</li>
+                </ul>
+            </div>
+            
+
+            <div class="feature-block">
+                <h3><i class="fas fa-file-code"></i>Text Editor</h3>
+                <ul>
+                    <li>Syntax highlighting</li>
+                    <li>Auto-completion</li>
+                    <li>Multi-cursor support</li>
+                    <li>Custom themes</li>
+                </ul>
+            </div>
+        </div>
+        <section id="community">
+            <div class="cont">
+                <div class="cta-sec">
+                    <div class="cta-cont">
+                        <h2>Unleash the power of Hacking.</h2>
+                        <p>Ready to dominate the Cyber universe? Join our community and take control like never before!</p>
+                            
+                    
+                                
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    
+    <footer>
+       
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Luna X is a powerful C# application designed for developers and power users. Our mission is to provide the best tools for productivity and security.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#">Home</a></p>
+                <p><a href="#">Features</a></p>
+                <p><a href="#">Download</a></p>
+                <p><a href="#">Support</a></p>
+            </div>
+
+         
+          
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://discord.gg/B348Cp8mhy" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="https://github.com/Apadlehetnekxd/Luna_X" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/magyar76770" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Luna X. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
