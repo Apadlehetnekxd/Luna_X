@@ -1,27 +1,44 @@
-# 🌙 **Luna X**  
-**Version:** 3.0  
-**Developed by:** Adam :3  
+# 🚀 **Luna X**  
 
-Luna X is an advanced tool designed to simplify various network-related tasks and automation. It combines simplicity with powerful functionalities for a seamless user experience.
+Luna X is a cutting-edge **C#-powered WiFi penetration testing and optimization tool** designed for professionals and enthusiasts. It provides **real-time network insights, speed analysis, and security diagnostics** to enhance your wireless experience.  
+
+🔗 **Official Website:** [lunax.site](https://lunax.site)  
 
 ---
+
+## 🛠 **Why Choose Luna X?**  
+
+✔ **⚡ Ultra-Fast Network Scanning** – Detects all nearby WiFi networks with **detailed SSID, BSSID, and channel info.**  
+✔ **🚀 Speed Test & Latency Monitor** – Accurately measures **download/upload speeds, ping, and jitter.**  
+✔ **🔍 Security Audit** – Identifies vulnerabilities, weak passwords, and encryption flaws.  
+✔ **📊 Advanced Logging & Reports** – Export **detailed network logs** in multiple formats.  
+
+---
+
+## 🔥 **Power Up Your WiFi Like Never Before!**  
+
+💻 **Supported OS:** Windows 7, 10, 11  
+📡 **Network Compatibility:** 2.4GHz & 5GHz, WPA2/WPA3, Hidden SSIDs  
+🔒 **For Ethical Hacking & Security Research**  
+
+🚀 **Download Luna X today and take control of your WiFi!**  
 
 ## ✨ **Features**
 
 - 📂 **Dir Command**  
-  - **Usage:** `dir` - Displays all connected networks in a detailed list.
+  - **Usage:** dir - Displays all connected networks in a detailed list.
 
 - 📝 **Write All**  
-  - **Usage:** `writeall` - Exports the list of connected networks to a file for further use.
+  - **Usage:** writeall - Exports the list of connected networks to a file for further use.
 
 - ❌ **Exit**  
-  - **Usage:** `exit` - Closes the application.
+  - **Usage:** exit - Closes the application.
 
 - 🛠️ **Help**  
-  - **Usage:** `help` - Provides detailed information and guidance on the available commands.
+  - **Usage:** help - Provides detailed information and guidance on the available commands.
 
 - 🔄 **Update**  
-  - **Usage:** `update` - Updates Luna X to the latest version.
+  - **Usage:** update - Updates Luna X to the latest version.
 
 - 🚀 **Try Auto Hack WiFi (Alpha)**  
   - ⚠️ *Warning: This feature is experimental. Use only on your own networks!*
@@ -34,30 +51,18 @@ Luna X is an advanced tool designed to simplify various network-related tasks an
 ## 🚀 **Installation and Usage**
 
 1. **Download the Package**:  
-   - Download the `Luna_X.7z` file from the official website or trusted source.
+   - Download the Luna_X.7z file from the official website or trusted source.
 
 2. **Extract the Files**:  
-   - Use a tool like [7-Zip](https://www.7-zip.org) to extract the `.7z` archive.
+   - Use a tool like [7-Zip](https://www.7-zip.org) to extract the .7z archive.
 
 3. **Run the Application**:  
-   - Open the `Luna X.exe` file in a compatible environment (e.g., Windows).
+   - Open the Luna X.exe file in a compatible environment (e.g., Windows).
 
 4. **Use the Features**:  
    - Follow the on-screen instructions to execute commands.
 
 ---
-
-## ⚙️ **File Details**
-
-- **Dir Command**: Lists all available networks.  
-- **Write All**: Saves network details into a file.  
-- **Exit**: Closes the Luna X application.  
-- **Help**: Provides usage information for all commands.  
-- **Update**: Checks for and applies the latest updates.  
-- **Code Editor**: Allows you to modify or create scripts directly.  
-
----
-
 ## ⚖️ **Legal Disclaimer**
 
 1. **Educational Purpose Only**  
