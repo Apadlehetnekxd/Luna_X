@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna X</title>
+    <link rel="icon" type="image/x-icon" href="favico.ico">
+    <style>
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            color: rgba(255, 255, 255, 0.95);
+            background-color: #000000;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+        }
+
+        p {
+            color: #dde4fd80;
+            line-height: 1.5;
+        }
+
+        h1 {
+            font-family: Epilogue, sans-serif;
+            font-size: 4em;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+
+        .backdrop {
+            background-image: url("../images/backdrop.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            width: 100%;
+            height: 70em;
+            position: absolute;
+            z-index: -1;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .blur {
+            -webkit-backdrop-filter: blur(1em);
+            backdrop-filter: blur(1em);
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 0.5em;
+            padding: 0 0.75em;
+            width: fit-content;
+            height: 2.75em;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            background-color: rgb(0, 0, 0);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .button-secondary {
+            color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.1);
+            box-sizing: border-box;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .button-secondary:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .button-secondary:active {
+            transform: scale(0.95);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 4em);
+            max-width: 33em;
+            padding-top: 12em;
+            margin: 0 auto;
+            text-align: center;
+            gap: 2em;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero > p {
+            max-width: 31rem;
+            font-size: 1.25em;
+            margin: 0 auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: row; 
+            justify-content: center;
+            gap: 1em;
+            z-index: 1;
+        }
+
+        .preview-container {
+            width: 100%;
+            margin-top: -9em;
+            padding-top: 9em;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 95%);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .preview {
+            display: block;
+            width: 65em; 
+            max-width: calc(100% - 2em);
+            margin: 3em auto;
+            filter: drop-shadow(0 -1.5em 3em #ae51ff59);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            animation: scaleIn 1.5s ease-out;
+        }
+
+        .preview:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 -1.5em 4em #ae51ff99);
+        }
+
+        @media (max-width: 768px) { 
+            h1 {
+                font-size: 2.5em; 
+            }
+            .hero > p {
+                font-size: 1em; 
+            }
+            .hero-buttons {
+                flex-direction: column; 
+                align-items: center;
+            }
+            .preview {
+                 width: 100%;
+                max-width: none; 
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .footer-content p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #0073e6;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            font-size: 0.8em;
+        }
+    </style>
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", () => {
+            const loader = document.createElement("div");
+            loader.className = "loader";
+            document.body.appendChild(loader);
+            loader.style.display = "block";
+
+            window.addEventListener("load", () => {
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    loader.remove();
+                }, 500);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="backdrop"></div>
+    <main>
+        <div class="hero">
+            <h1>Luna X is back, better Than ever</h1>
+            <p>
+                A powerful C# hacking app, complete
+                with a text editor and built-in hacking tools.
+            </p>
+            <div class="hero-buttons">
+                <a class="button download-button" href="https://github.com/Apadlehetnekxd/Luna_X/releases/download/LUNA/Luna-X.zip">
+                    <img src="images/windows.svg" alt="Windows Logo">
+                    <p>Download for Windows</p>
+                </a>
+                <a class="button button-secondary invite-button" href="https://discord.gg/B348Cp8mhy" target="_blank" rel="noopener noreferrer">
+                    <img src="images/discord.svg" alt="Discord Logo">
+                    <p>Join Discord</p>
+                </a>
+            </div>
+        </div>
+        <div class="preview-container">
+            <img class="preview" src="images/preview.png" alt="Luna X Preview" draggable="false">
+        </div>
+    </main>
+    
+</body>
+</html>
